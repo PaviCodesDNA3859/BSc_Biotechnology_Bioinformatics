@@ -4,7 +4,7 @@ This repository serves as a functional archive of core bioinformatics scripts de
 
 ---
 
-## 1: DNA GC-Content & Structural Thermodynamic Calculator
+## Module 1: DNA GC-Content & Structural Thermodynamic Calculator
 
 ### 1. Scientific Context
 In molecular biology, **GC-content** represents the exact percentage of nitrogenous bases in a DNA or RNA fragment that are either Guanine (G) or Cytosine (C). 
