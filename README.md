@@ -36,3 +36,26 @@ The system successfully maps and outputs the following biochemical metrics direc
 *   **Calculated GC-Content:** 38.596491228070175% (~38.59%)
 
 *Thermodynamic Deduction:* A result of 38.59% classifies this sequence as AT-rich. In a practical laboratory setting, this template would require a significantly lower denaturation temperature threshold inside a thermal cycler due to the lower cumulative density of triple-hydrogen bonds.
+
+---
+
+## Module 2: Codon Translation Triage Pipeline
+
+### 1. Scientific Context
+During cellular translation, a biological ribosome reads an mRNA transcript sequentially in three-nucleotide blocks known as **codons** to construct peptide chains. The accurate initialization, elongation, and termination of this sequence dictate protein structure and cellular function.
+
+This automated triage pipeline simulates ribosomal processing behavior across an active reading frame by categorizing inputs into distinct execution phases:
+* **Initiation (START):** Triggered exclusively by the `ATG` codon, marking the origin point of translation.
+* **Elongation:** Standard structural codons calling for tRNA-mediated amino acid delivery to append the growing peptide chain.
+* **Termination (STOP):** Recognized via three universal stop signals (`TAA`, `TAG`, `TGA`), where molecular release factors dismantle the translation complex.
+
+### 2. Algorithmic Workflow & Optimization
+The architecture uses a high-efficiency single-pass iteration sequence:
+1.  **Iterative Enumeration:** Implements Python's native `enumerate()` generator to track absolute index positioning coordinates in memory without running redundant linear searches.
+2.  **Conditional Gating Matrix:** Deploys prioritized conditional blocks (`if`/`elif`/`else`) to evaluate strings.
+3.  **Containment Evaluation:** Condenses stop codon evaluation logic using a lookup collection (`in ["TAA", "TGA", "TAG"]`), minimizing logical check overhead.
+
+### 3. Execution & Analytical Output
+Input Stream Array: `["ATG", "GTC", "TAA", "CCA", "TAG", "GTT", "TGA", "ACT"]`
+
+The system evaluates the data register and generates a clean tracking log directly within the console terminal environment, mapping each operational phase to its specific positional coordinates.
