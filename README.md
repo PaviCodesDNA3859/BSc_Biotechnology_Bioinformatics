@@ -59,3 +59,26 @@ The architecture uses a high-efficiency single-pass iteration sequence:
 Input Stream Array: `["ATG", "GTC", "TAA", "CCA", "TAG", "GTT", "TGA", "ACT"]`
 
 The system evaluates the data register and generates a clean tracking log directly within the console terminal environment, mapping each operational phase to its specific positional coordinates.
+
+---
+
+## Module 3: The Central Dogma Automation Engine
+
+### 1. Scientific Context
+In molecular genetics, cellular transcription represents the foundational mechanism of the Central Dogma, where genetic blueprints stored inside double-stranded DNA are transcribed into single-stranded messenger RNA (mRNA) transcripts by RNA polymerase. 
+
+To automate this process, a computational pipeline must respect two critical biochemical rules:
+* **Complementary Pairing (Replication/Coding):** DNA strands run anti-parallel. The template strand must be mapped to its exact structural complement where Adenine (A) pairs with Thymine (T), and Cytosine (G) pairs with Guanine (C).
+* **Ribose Transition (Transcription):** During RNA synthesis, Thymine is chemically unavailable and is entirely substituted by the pyrimidine base Uracil (U).
+
+### 2. Algorithmic Workflow & Structural Optimization
+A naive sequential execution string replacement (e.g., swapping A with T, then T with A) results in a logical collision where subsequent operations overwrite prior data arrays. 
+
+To bypass this architectural limitation, this module implements a parallel mapping matrix:
+1. **Simultaneous Translation Matrix:** Deploys `str.maketrans()` to evaluate the entire string layout in a single execution pass, mapping template bases to coding complements simultaneously without sequential data corruption.
+2. **Transcript Conversion:** Executes an optimized single-character substitution pipeline (`.replace()`) to transition the established coding strand into an active mRNA sequence stream.
+
+### 3. Execution & Analytical Output
+* **Input DNA Template:** `TACGGCCTAATC`
+* **Generated Coding Strand:** `ATGCCGGATTAG`
+* **Final mRNA Transcript:** `AUGCCGGAUUAG`
