@@ -82,3 +82,17 @@ To bypass this architectural limitation, this module implements a parallel mappi
 * **Input DNA Template:** `TACGGCCTAATC`
 * **Generated Coding Strand:** `ATGCCGGATTAG`
 * **Final mRNA Transcript:** `AUGCCGGAUUAG`
+
+---
+
+## Module 4: Genomic File Parsing Infrastructure
+
+### 1. Scientific & Structural Context
+In raw computational genomic analysis, sequence strings are structurally too vast to be embedded directly within programmatic source variables. High-throughput sequencing pipelines rely heavily on the standardized **FASTA text file format** to organize, compress, and transfer genomic data structures.
+
+A standard FASTA infrastructure follows a binary architectural format:
+* **The Header Line (`>`):** Initial single-line metadata register defining the structural source, accession code, and taxonomy profile of the sequence.
+* **The Sequence Block:** Multi-line text layout containing the raw biological character sequences, structurally restricted to fixed column widths (typically 60-80 parameters) to optimize file parsing buffers.
+
+### 2. Architectural Blueprint
+The incoming processing framework transitions the repository from manual sequence declaration to disk I/O operational parsing. The underlying engine will target the initialized `sample_insulin.fasta` file, isolate and bypass descriptive header matrices, strip whitespace buffers, and merge split sequence arrays into a unified continuous data string for structural processing.
