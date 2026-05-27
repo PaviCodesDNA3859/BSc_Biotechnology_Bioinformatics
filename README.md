@@ -96,3 +96,23 @@ A standard FASTA infrastructure follows a binary architectural format:
 
 ### 2. Architectural Blueprint
 The incoming processing framework transitions the repository from manual sequence declaration to disk I/O operational parsing. The underlying engine will target the initialized `sample_insulin.fasta` file, isolate and bypass descriptive header matrices, strip whitespace buffers, and merge split sequence arrays into a unified continuous data string for structural processing.
+
+---
+
+## Module 5: Automated Genomic File Parsing Engine
+
+### 1. Scientific & Structural Context
+Raw data files ingested from external sequence databases contain format-specific structural noise (metadata blocks and line-wrapping delimiters) that corrupts downstream analytical metrics if processed raw. 
+
+This module serves as a data-cleaning pipeline, executing file-system extraction and sequence normalization to isolate functional genomic data from physical text assets.
+
+### 2. Architectural Implementation
+The processing script establishes a clean data pipeline to target, read, and normalize the raw template file:
+1. **Context-Managed Ingestion:** Deploys a secure `with open()` file-system context manager, maintaining an active stream buffer to `sample_insulin.fasta` while guaranteeing automated memory reclamation.
+2. **Metadata Elimination Gate:** Evaluates incoming text streams row-by-row using the structural character check `.startswith('>')`. When detected, an automated execution skip command (`continue`) drops the record to bypass the header segment.
+3. **Array Accumulation & Sanitization:** Initializes an explicit string accumulator array outside the loop context. As the file stream processes valid nucleotide sequences, the pipeline executes a target character substitution matrix (`.replace('\n', '')`) to drop line-wrapping markers and unify the bases into a single continuous sequence parameter.
+
+### 3. Verification & Compute Metrics
+* **Target File Source:** `sample_insulin.fasta`
+* **Computed Array Dimensions:** `420 base pairs`
+* **Normalized In-Memory Sequence:** `AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGATCACTGTCCTTCTGCCATGGCCCTGTGGATGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACCCAGCCGCAGCCTTTGTGAACCAACACCTGTGCGGCTCACACCTGGTGGAAGCTCTCTACCTAGTGTGCGGGGAACGAGGCTTCTTCTACACACCCAAGACCCGCCGGGAGGCAGAGGACCTGCAGGTGGGGCAGGTGGAGCTGGGCGGGGGCCCTGGTGCAGGCAGCCTGCAGCCCTTGGCCCTGGAGGGGTCCCTGCAGAAGCGTGGCATTGTGGAACAATGCTGTACCAGCATCTGCTCCCTCTACCAGCTGGAGAACTACTGCAACTAGACGCAGCCCGCAGGCAGCCCCCCACCCG`.
