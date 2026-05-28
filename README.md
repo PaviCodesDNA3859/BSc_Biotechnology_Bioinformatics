@@ -116,3 +116,18 @@ The processing script establishes a clean data pipeline to target, read, and nor
 * **Target File Source:** `sample_insulin.fasta`
 * **Computed Array Dimensions:** `420 base pairs`
 * **Normalized In-Memory Sequence:** `AGCCCTCCAGGACAGGCTGCATCAGAAGAGGCCATCAAGCAGATCACTGTCCTTCTGCCATGGCCCTGTGGATGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGACCTGACCCAGCCGCAGCCTTTGTGAACCAACACCTGTGCGGCTCACACCTGGTGGAAGCTCTCTACCTAGTGTGCGGGGAACGAGGCTTCTTCTACACACCCAAGACCCGCCGGGAGGCAGAGGACCTGCAGGTGGGGCAGGTGGAGCTGGGCGGGGGCCCTGGTGCAGGCAGCCTGCAGCCCTTGGCCCTGGAGGGGTCCCTGCAGAAGCGTGGCATTGTGGAACAATGCTGTACCAGCATCTGCTCCCTCTACCAGCTGGAGAACTACTGCAACTAGACGCAGCCCGCAGGCAGCCCCCCACCCG`.
+
+---
+
+## Module 6: Global Biological Databases & Data Provenance
+
+### 1. Scientific Context
+In computational biology, data provenance and global standardization are critical for reproducible research. Genomic sequences generated via high-throughput sequencing platforms are archived across a decentralized, cross-synchronized network of international data repositories.
+
+The core global architecture relies on the **International Nucleotide Sequence Database Collaboration (INSDC)**, which comprises three primary institutions:
+* **NCBI (National Center for Biotechnology Information - USA):** Manages GenBank, a comprehensive public database of nucleotide sequences and supporting biomedical literature.
+* **ENA (European Nucleotide Archive - UK/Europe):** Provides a comprehensive record of the world's nucleotide sequencing information, covering raw data, alignments, and functional annotations.
+* **DDBJ (DNA Data Bank of Japan - Asia):** Serves as the primary data collection and dissemination hub for genomic assets generated across Asian research sectors.
+
+### 2. Operational Application
+Downstream computational pipelines (such as automated file parsers and sequence aligners) rely on unique identifiers—known as **Accession Numbers** (e.g., `NM_000207.3`)—assigned by these databases to guarantee absolute data integrity and version control when fetching raw FASTA assets for automated processing.
