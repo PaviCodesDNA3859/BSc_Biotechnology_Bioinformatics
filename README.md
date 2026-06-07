@@ -137,6 +137,7 @@ Downstream computational pipelines (such as automated file parsers and sequence 
 ## Module 7: Genomic Translation and Post-Translational Processing Pipeline for Human Insulin (INS)
 
 ### 1. Project Overview
+
 This project delivers a specialized bioinformatics pipeline designed to parse, transcribe, align, and translate the raw nucleotide sequence of the human insulin gene (*INS*) into its mature, hormone-active form. Designed as part of the Module 7 curriculum, the script automates the processing of NCBI Reference Sequence: `NM_000207.3` (Homo sapiens insulin, transcript variant 1, mRNA), mimicking both the transcriptional mechanics of the ribosome and the post-translational enzymatic processing occurring inside mammalian pancreatic beta cells.
 ---
 ### 2. Biological Architecture & Data Coordinates
@@ -181,17 +182,18 @@ The execution block inside `Insulin_Translation_Engine.py` handles data transfor
 5.  **Multi-Stage Digital Proteolysis:** The final module applies precise index slices to isolate the active B-chain and A-chain fragments, displaying them alongside a structural marker simulating the physical disulfide bridges connecting the chains.
 ---
 ### 4. Expected Output Structure
-#### [SYSTEM] Parsing File For Translation : sample_insulin.fasta
-####mRNA Sequence : AGCCCUCCAGGACAG...
-####Coding mRNA Sequence : AUGGCCCUGUGGAUG...
-####Preproinsulin Protein Sequence : ####MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
-####Proinsulin Protein Sequence : ####FVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
-####Mature Insulin Protein Sequence : 
-####Active B-Chain ( 30 AA ) : FVNQHLCGSHLVEALYLVCGERGFFYTPKT
-####/                    /
-####Disulphide Bonds In Between Cysteines
-####/                    /
-####Active A-Chain ( 21 AA ) : GIVEQCCTSICSLYQLENYCN
+
+[SYSTEM] Parsing File For Translation : sample_insulin.fasta
+mRNA Sequence : AGCCCUCCAGGACAG...
+Coding mRNA Sequence : AUGGCCCUGUGGAUG...
+Preproinsulin Protein Sequence : MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
+Proinsulin Protein Sequence : FVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
+Mature Insulin Protein Sequence : 
+Active B-Chain ( 30 AA ) : FVNQHLCGSHLVEALYLVCGERGFFYTPKT
+/                    /
+Disulphide Bonds In Between Cysteines
+/                    /
+Active A-Chain ( 21 AA ) : GIVEQCCTSICSLYQLENYCN
 ---
 ### 5. Coder's Note
 ~ Initially, having not solidified my basics in the overall structure of human insulin and the sequence of events in it's translation, I was stuck with trying to translate the raw mRNA sequence generated from the FASTA file through my parsing, resulting in a ten day slump from speedrunning my coding journey. After coming to terms that perhaps it's not my code or the syntax but the lack of molecular knowledge and it's implementation where it all went wrong and the lacking dictionary I implemented to my code. After reviewing the conceptual aspects of insulin and the structural transformations it has to undergo in order to finally result in mature insulin, as in from preproinsulin to proinsulin (After removal of Signal peptide) and finally to mature insulin (After removal of C peptide which gives insulin it's structure), I finally realised I could then easily foresee the required logical approach. Finally, after updating my dictionary with the help of sources and fixing my syntax accordingly, I finally broke my ten day slump, successfully. I added lines to indicate the disulphide bonds between the sulphur atoms in the amino acids (Cysteine) of the A-Chain and B-Chain to visualise the structure as well as add a personal touch to my code XD.
