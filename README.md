@@ -137,8 +137,7 @@ Downstream computational pipelines (such as automated file parsers and sequence 
 ## Module 7: Genomic Translation and Post-Translational Processing Pipeline for Human Insulin (INS)
 
 ### 1. Project Overview
-
--> This project delivers a specialized bioinformatics pipeline designed to parse, transcribe, align, and translate the raw nucleotide sequence of the human insulin gene (*INS*) into its mature, hormone-active form. Designed as part of the Module 7 curriculum, the script automates the processing of NCBI Reference Sequence: `NM_000207.3` (Homo sapiens insulin, transcript variant 1, mRNA), mimicking both the transcriptional mechanics of the ribosome and the post-translational enzymatic processing occurring inside mammalian pancreatic beta cells.
+This project delivers a specialized bioinformatics pipeline designed to parse, transcribe, align, and translate the raw nucleotide sequence of the human insulin gene (*INS*) into its mature, hormone-active form. Designed as part of the Module 7 curriculum, the script automates the processing of NCBI Reference Sequence: `NM_000207.3` (Homo sapiens insulin, transcript variant 1, mRNA), mimicking both the transcriptional mechanics of the ribosome and the post-translational enzymatic processing occurring inside mammalian pancreatic beta cells.
 ---
 ### 2. Biological Architecture & Data Coordinates
 
@@ -182,8 +181,7 @@ The execution block inside `Insulin_Translation_Engine.py` handles data transfor
 5.  **Multi-Stage Digital Proteolysis:** The final module applies precise index slices to isolate the active B-chain and A-chain fragments, displaying them alongside a structural marker simulating the physical disulfide bridges connecting the chains.
 ---
 ### 4. Expected Output Structure
-
--> [SYSTEM] Parsing File For Translation : sample_insulin.fasta
+[SYSTEM] Parsing File For Translation : sample_insulin.fasta
 mRNA Sequence : AGCCCUCCAGGACAG...
 Coding mRNA Sequence : AUGGCCCUGUGGAUG...
 Preproinsulin Protein Sequence : MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
