@@ -139,7 +139,7 @@ Downstream computational pipelines (such as automated file parsers and sequence 
 ### 1. Project Overview
 This project delivers a specialized bioinformatics pipeline designed to parse, transcribe, align, and translate the raw nucleotide sequence of the human insulin gene (*INS*) into its mature, hormone-active form. Designed as part of the Module 7 curriculum, the script automates the processing of NCBI Reference Sequence: `NM_000207.3` (Homo sapiens insulin, transcript variant 1, mRNA), mimicking both the transcriptional mechanics of the ribosome and the post-translational enzymatic processing occurring inside mammalian pancreatic beta cells.
 
-The primary engineering hurdle resolved in this implementation is the mitigation of open reading frame (ORF) shifts caused by upstream non-coding sequences, ensuring 100% fidelity in protein synthesis without relying on static, fragile index assumptions.
+### The primary engineering hurdle resolved in this implementation is the mitigation of open reading frame (ORF) shifts caused by upstream non-coding sequences, ensuring 100% fidelity in protein synthesis without relying on static, fragile index assumptions.
 ---
 ### 2. Biological Architecture & Data Coordinates
 
