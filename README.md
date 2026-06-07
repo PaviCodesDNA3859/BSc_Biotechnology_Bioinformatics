@@ -131,3 +131,69 @@ The core global architecture relies on the **International Nucleotide Sequence D
 
 ### 2. Operational Application
 Downstream computational pipelines (such as automated file parsers and sequence aligners) rely on unique identifiers—known as **Accession Numbers** (e.g., `NM_000207.3`)—assigned by these databases to guarantee absolute data integrity and version control when fetching raw FASTA assets for automated processing.
+
+---
+
+## Module 7: Genomic Translation and Post-Translational Processing Pipeline for Human Insulin (INS)
+
+### 1. Project Overview
+This project delivers a specialized bioinformatics pipeline designed to parse, transcribe, align, and translate the raw nucleotide sequence of the human insulin gene (*INS*) into its mature, hormone-active form. Designed as part of the Module 7 curriculum, the script automates the processing of NCBI Reference Sequence: `NM_000207.3` (Homo sapiens insulin, transcript variant 1, mRNA), mimicking both the transcriptional mechanics of the ribosome and the post-translational enzymatic processing occurring inside mammalian pancreatic beta cells.
+
+The primary engineering hurdle resolved in this implementation is the mitigation of open reading frame (ORF) shifts caused by upstream non-coding sequences, ensuring 100% fidelity in protein synthesis without relying on static, fragile index assumptions.
+---
+### 2. Biological Architecture & Data Coordinates
+
+Standard genomic data streams contain architectural layers that do not translate directly into structural proteins. This pipeline tracks the biological lifecycle of the *INS* transcript through four distinct molecular phases:
+
+#### 1. The 5' Untranslated Region (5' UTR Runway)
+The initial 59 nucleotides of the mRNA sequence (`AGCCCT...`) act as a ribosomal docking track. They do not possess amino acid coding instructions. The true Open Reading Frame begins strictly at index 59 with the initialization codon `AUG`.
+
+#### 2. Preproinsulin (The Initial Translation Product)
+Spanning from the `AUG` start codon to the terminating stop codon, this continuous 110-amino-acid chain represents the raw translation sequence. It contains the structural directives required for cellular routing but cannot yet execute metabolic signaling.
+
+#### 3. Proinsulin (The Folded Precursor)
+Pancreatic enzymes cleave the first 24 amino acids from the N-terminus. This omitted section is the **Signal Peptide**, a hydrophobic sequence whose sole purpose is navigating the growing protein through the Endoplasmic Reticulum membrane. Its removal yields Proinsulin (85 amino acids), which subsequently stabilizes via internal disulfide cross-linkages.
+
+#### 4. Mature Human Insulin (The Dual-Chain Hormone)
+To activate the hormone, the intracellular protease *Prohormone Convertase* excises the internal **C-Peptide loop** alongside its flanking dibasic cleavage markers (`RR` and `KR`). This cleavage divides the molecule into two distinct, covalently bonded polypeptide strands:
+*   **Active B-Chain:** The initial 30 amino acids (`FVNQHLCGSHLVEALYLVCGERGFFYTPKT`)
+*   **Active A-Chain:** The final 21 amino acids (`GIVEQCCTSICSLYQLENYCN`)
+
+#### Coordinate Matrix Map
+The pipeline navigates the transcript string using the following mathematical index slices:
+
+| Molecular Segment | Length | Sequence Coordinates | Slice Logic (Python Syntax) |
+| :--- | :--- | :--- | :--- |
+| Full mRNA Transcript | 465 nt | Indices 0 to 464 | `mRNA_sequence` |
+| Coding Sequence (CDS) | 333 nt | Indices 59 to 392 | `mRNA_sequence[start:]` |
+| Preproinsulin Peptide | 110 AA | Indices 0 to 109 | `preproinsulin` |
+| Proinsulin Segment | 85 AA | Indices 24 to 109 | `preproinsulin[24:]` |
+| Active B-Chain | 30 AA | Indices 0 to 29 | `proinsulin[0:30]` |
+| Omitted C-Peptide | 35 AA | Indices 30 to 64 | Deleted during processing |
+| Active A-Chain | 21 AA | Indices 65 to 85 | `proinsulin[65:]` |
+---
+### 3. Pipeline Logic & Algorithmic Steps
+
+The execution block inside `Insulin_Translation_Engine.py` handles data transformation through a five-stage architecture:
+
+1.  **File Input and Normalization:** The FASTA file parser detects and skips the FASTA header string (`>NM_000207.3...`), extracts the raw multiline sequence lines, strips out structural newline characters (`\n`), and merges the broken fragments into one unbroken string.
+2.  **Biochemical Transcription:** Utilizing a translation matrix map, the script converts DNA Thymine (`T`) bases into RNA Uracil (`U`) bases to prepare the data array for ribosomal simulation.
+3.  **Dynamic Reading Frame Alignment:** Rather than deploying a hardcoded offset index, the pipeline searches the compiled transcript string using an automated `.find('AUG')` locator. This ensures that regardless of the 5' UTR runway length, the translation window matches the biological frame initialization.
+4.  **Codon Translation Loop:** The script parses the sequence in sequential, non-overlapping triplets (3-nucleotide steps). Each triplet queries a global 64-key dictionary object to append the matching amino acid single-letter identifier, terminating cleanly when an explicit `[STOP]` condition is met.
+5.  **Multi-Stage Digital Proteolysis:** The final module applies precise index slices to isolate the active B-chain and A-chain fragments, displaying them alongside a structural marker simulating the physical disulfide bridges connecting the chains.
+---
+### 4. Expected Output Structure
+[SYSTEM] Parsing File For Translation : sample_insulin.fasta
+mRNA Sequence : AGCCCUCCAGGACAG...
+Coding mRNA Sequence : AUGGCCCUGUGGAUG...
+Preproinsulin Protein Sequence : MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
+Proinsulin Protein Sequence : FVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
+Mature Insulin Protein Sequence : 
+Active B-Chain ( 30 AA ) : FVNQHLCGSHLVEALYLVCGERGFFYTPKT
+/                    /
+Disulphide Bonds In Between Cysteines
+/                    /
+Active A-Chain ( 21 AA ) : GIVEQCCTSICSLYQLENYCN
+---
+### 5. Coder's Note
+~ Initially, having not solidified my basics in the overall structure of human insulin and the sequence of events in it's translation, I was stuck with trying to translate the raw mRNA sequence generated from the FASTA file through my parsing, resulting in a ten day slump from speedrunning my coding journey. After coming to terms that perhaps it's not my code or the syntax but the lack of molecular knowledge and it's implementation where it all went wrong and the lacking dictionary I implemented to my code. After reviewing the conceptual aspects of insulin and the structural transformations it has to undergo in order to finally result in mature insulin, as in from preproinsulin to proinsulin (After removal of Signal peptide) and finally to mature insulin (After removal of C peptide which gives insulin it's structure), I finally realised I could then easily foresee the required logical approach. Finally, after updating my dictionary with the help of sources and fixing my syntax accordingly, I finally broke my ten day slump, successfully. I added lines to indicate the disulphide bonds between the sulphur atoms in the amino acids (Cysteine) of the A-Chain and B-Chain to visualise the structure as well as add a personal touch to my code XD.
