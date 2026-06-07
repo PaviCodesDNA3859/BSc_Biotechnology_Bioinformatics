@@ -183,7 +183,7 @@ The execution block inside `Insulin_Translation_Engine.py` handles data transfor
 5.  **Multi-Stage Digital Proteolysis:** The final module applies precise index slices to isolate the active B-chain and A-chain fragments, displaying them alongside a structural marker simulating the physical disulfide bridges connecting the chains.
 ---
 ### 4. Expected Output Structure
-[SYSTEM] Parsing File For Translation : sample_insulin.fasta
+####[SYSTEM] Parsing File For Translation : sample_insulin.fasta
 mRNA Sequence : AGCCCUCCAGGACAG...
 Coding mRNA Sequence : AUGGCCCUGUGGAUG...
 Preproinsulin Protein Sequence : MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN[STOP]
