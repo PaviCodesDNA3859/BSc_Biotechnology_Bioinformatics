@@ -33,5 +33,5 @@ elif Surface_To_Volume_Ratio <= 1:
     print('Generated Surface To Volume Ratio Indicates Poor Efficiency Specimen Structure Indicating Requirement Of Adaptations.')
 else:
     print('Generated Surface To Volume Ratio Indicates Moderate To Low Specimen Structure Indicating Good To Limited Diffusion Potential.')
-
+ 
 
