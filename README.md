@@ -195,3 +195,27 @@ Active A-Chain ( 21 AA ) : GIVEQCCTSICSLYQLENYCN
 
 ### 5. Coder's Note
 ~ Initially, having not solidified my basics in the overall structure of human insulin and the sequence of events in it's translation, I was stuck with trying to translate the raw mRNA sequence generated from the FASTA file through my parsing, resulting in a ten day slump from speedrunning my coding journey. After coming to terms that perhaps it's not my code or the syntax but the lack of molecular knowledge and it's implementation where it all went wrong and the lacking dictionary I implemented to my code. After reviewing the conceptual aspects of insulin and the structural transformations it has to undergo in order to finally result in mature insulin, as in from preproinsulin to proinsulin (After removal of Signal peptide) and finally to mature insulin (After removal of C peptide which gives insulin it's structure), I finally realised I could then easily foresee the required logical approach. Finally, after updating my dictionary with the help of sources and fixing my syntax accordingly, I finally broke my ten day slump, successfully. I added lines to indicate the disulphide bonds between the sulphur atoms in the amino acids (Cysteine) of the A-Chain and B-Chain to visualise the structure as well as add a personal touch to my code XD.
+
+---
+
+## Module 8: Cellular Morphology and Diffusion Efficiency Predicting Engine
+
+### 1. Project Overview
+This module expands the computational biology data pipeline into physical systems biology by modeling the strict geometric constraints that dictate cellular dimensions. The script calculates the exact Surface Area-to-Volume (SA:V) ratio of distinct cell morphologies (e.g., spherical cocci, rod-shaped bacilli ( cylindrical ), cuboidal plant cells) to evaluate their evolutionary fitness, diffusion limits, and transport efficiencies.
+
+### 2. Physical Equations & Core Logic
+The application processes inputs using standard dimensional metrics:
+*   **Cuboidal Model:**  
+    $$SA = 2(lb + bh + hl) \quad | \quad V = l \cdot b \cdot h$$
+*   **Cylindrical Model:**  
+    $$SA = 2\pi r(r + h) \quad | \quad V = \pi r^2 h$$
+*   **Spherical Model:**  
+    $$SA = 4\pi r^2 \quad | \quad V = \frac{4}{3}\pi r^3$$
+
+When cells expand without division, their internal volume increases exponentially faster than their surface area. This engine dynamically evaluates structures based on established critical transport thresholds to highlight the exact physical laws that force biological cells to maintain microscopic scales.
+
+### 3. Execution & Input Requirements
+The module utilizes standard user prompts to gather dimensional parameters in micrometers (µm), normalizes inputs via string methods, and deploys the `math` module for floating-point constant precision ($\pi$). Output metrics are rendered to two decimal points (`.2f`) for clean quantitative reporting.
+
+### 4. Coder's Note
+~ After a couple weeks of settling into my college routine and academic tasks, I am now finally able to incorporate coding to my daily schedule again. This was a relatively much simpler project to work on compared to my previous projects but to align my coding skills with my ongoing Biotechnology syllabus in this way, I believe, helps in solidifying my understanding of both the theory and the syntax. In this project I did after all learn how to optimize my code by the usage of the 'math' library and conditional control structures. Moving forward I plan on refining my documentation workflow. 
